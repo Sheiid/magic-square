@@ -14,7 +14,7 @@ int checkmagic(int **);
 int main() {
 
 	FILE *fp;
-	int **mat, used[dim], level, res;
+	int **mat, used[dim*dim], level, res;
 	//int matrix[dim][dim]={{2,7,6},{9,5,1},{4,3,8}};
 	int i, j;
 //	if(checkmagic(matrix)){
@@ -33,7 +33,7 @@ int main() {
 			return 0;
 		}
 	}
-	for (i = 0; i < dim; i++) {
+	for (i = 0; i < dim*dim; i++) {
 		used[i] = 0;
 
 	}
