@@ -9,12 +9,12 @@
 #include<math.h>
 #define dim 3
 
-int magic(int **, int[dim], int);
+int magic(int **, int[], int);
 int checkmagic(int **);
 int main() {
 
 	FILE *fp;
-	int **mat, used[dim*dim], level, res;
+	int **mat, used[10], level, res;
 	//int matrix[dim][dim]={{2,7,6},{9,5,1},{4,3,8}};
 	int i, j;
 //	if(checkmagic(matrix)){
@@ -33,7 +33,7 @@ int main() {
 			return 0;
 		}
 	}
-	for (i = 0; i < dim*dim; i++) {
+	for (i = 0; i < 10; i++) {
 		used[i] = 0;
 
 	}
@@ -56,6 +56,7 @@ int main() {
 		}
 	}else
 		printf("magic square not Found !\n");
+
 	for (i = 0; i < dim; i++) {
 		free(mat[i]);
 	}
@@ -64,7 +65,7 @@ int main() {
 	return 0;
 }
 int magic(int **mat, int used[], int level) {
-	int i, j, k;
+	int i=0, j=0, k;
 
 	//termination case
 	if (level == 9) {
@@ -85,13 +86,14 @@ int magic(int **mat, int used[], int level) {
 				printf("%d matrix\n", mat[i][j]);
 				if (magic(mat, used, level+1))
 					return 1;
+				used[k] = 0;
 			}
-			used[k] = 0;
+
 
 		}
-
+		return 0;
 	}
-	return 0;
+
 
 }
 int checkmagic(int **mat) {
